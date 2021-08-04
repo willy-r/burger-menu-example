@@ -18,7 +18,9 @@ body {
   background-color: #293241;
 }
 
-ul { list-style-type: none; }
+ul {
+  list-style-type: none;
+}
 
 a {
   text-decoration: none;
@@ -27,9 +29,10 @@ a {
 
 .header {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   padding: 20px 60px;
   background-color: #ee6c4d;
+  border-radius: 0 0 10px 10px;
 }
 
 .nav {
@@ -45,15 +48,25 @@ a {
 }
 
 .nav__logo:hover,
-.nav__logo:focus { opacity: .5; }
+.nav__logo:focus {
+  opacity: 0.5;
+}
 
-#check { display: none; }
+#check {
+  display: none;
+}
 
-.nav__menu { display: flex; }
+.nav__menu {
+  display: flex;
+}
 
-.nav__menu.nav__menu--mobile { display: none; }
+.nav__menu.nav__menu--mobile {
+  display: none;
+}
 
-.nav__menu > li + li { margin-left: 10px; }
+.nav__menu > li + li {
+  margin-left: 10px;
+}
 
 .nav__link {
   display: inline-block;
@@ -65,17 +78,46 @@ a {
 .nav__link:hover,
 .nav__link:focus {
   transform: scale(1.05);
-  opacity: .5;
+  opacity: 0.5;
 }
 
-.nav > label { display: none; }
+.nav > label {
+  display: none;
+}
+
+.blur {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.369);
+}
 
 @media (max-width: 450px) {
+  /* Alinhando o header a uma cara mais "Mobile" */
+  header.header {
+    height: 55px;
+    padding: 0 10px;
+  }
+
+  header > nav {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__logo {
+    font-size: 20px;
+  }
+
   .nav__menu {
     position: absolute;
     top: -17px;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     flex-direction: column;
     width: 100%;
     padding: 0 60px 20px;
@@ -85,11 +127,22 @@ a {
     transition: 300ms;
   }
 
-  .nav__menu.nav__menu--mobile { display: flex; }
+  .nav__menu.nav__menu--mobile {
+    display: flex;
+  }
 
   #check:checked ~ .nav__menu {
     visibility: visible;
-    transform: translateY(100%);
+    transform: translateY(50%);
+    background-color: #e65f3fe6;
+    border-radius: 0 0 10px 10px;
+  }
+  #check:checked ~ .blur {
+    display: block;
+  }
+
+  .nav__menu--mobile > .spaceAlign {
+    height: 30px;
   }
 
   .nav__menu > li + li {
@@ -98,13 +151,63 @@ a {
   }
 
   .nav > label {
-    display: inline;
+    height: 40px;
+    display: flex;
     cursor: pointer;
-    font-size: 18px;
-    font-weight: 700;
     transition: 200ms ease-in;
+    position: relative;
+  }
+  /* Aumentando a largura da "stroke" do icon do menu */
+  .nav > label:hover,
+  .nav > label:focus {
+    opacity: 0.5;
   }
 
-  .nav > label:hover,
-  .nav > label:focus { opacity: .5; }
+  /* Alinhando um elemento de fluxo comum ao centro de uma div, criando o "icon"
+   menu com uma div e aplicando a animação em formato de "X" */
+
+  header > nav > label > .icon {
+    margin: auto;
+  }
+
+  header > nav > label > .icon,
+  header > nav > label > .icon::after,
+  header > nav > label > .icon::before {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: ease 0.6s;
+  }
+
+  header > nav > label > .icon::before {
+    position: absolute;
+    top: 7px;
+  }
+
+  header > nav > label > .icon::after {
+    position: absolute;
+    bottom: 7px;
+  }
+
+  header > nav > label > .icon::after,
+  header > nav > label > .icon::before {
+    content: "";
+  }
+
+  #check:checked ~ header > nav > label > .icon::after {
+    bottom: 0;
+    transform: rotate(88deg);
+  }
+
+  #check:checked ~ header > nav > label > .icon {
+    transform: rotate(40deg);
+  }
+  #check:checked ~ header > nav > label > .icon::before {
+    top: 0;
+    transform: rotate(-88deg);
+  }
 }

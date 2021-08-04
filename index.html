@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      
-      <title>Menu Hambúrguer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <link rel="stylesheet" href="style.css">
+    <title>Menu Hambúrguer</title>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Input para verificar se o usuário clicou no menu, o display é none por padrão. -->
-    <input type="checkbox" id="check">
+    <input type="checkbox" id="check" />
+    <div class="blur" ></div>
 
     <header class="header">
       <nav class="nav">
@@ -23,12 +24,17 @@
         </ul>
 
         <!-- Label para marcar/desmarcar o input. -->
-        <label for="check">Menu</label>
+        <label for="check">
+          <!-- Icon Menu em degradê -->
+          <div class="icon" />
+        </label>
       </nav>
     </header>
 
-    <!-- Isso é necessário para o menu passar por baixo do header na mesma camada. --> 
+    <!-- Isso é necessário para o menu passar por baixo do header na mesma camada. -->
     <ul class="nav__menu nav__menu--mobile">
+      <!-- first Li is for alignment -->
+      <li class="spaceAlign"></li>
       <li><a class="nav__link" href="">Link 1</a></li>
       <li><a class="nav__link" href="">Link 2</a></li>
       <li><a class="nav__link" href="">Link 3</a></li>
