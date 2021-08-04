@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <title>Menu Hambúrguer</title>
+
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Input para verificar se o usuário clicou no menu, o display é none por padrão. -->
+    <input type="checkbox" id="check">
+
+    <header class="header">
+      <nav class="nav">
+        <a href="" class="nav__logo">Logo</a>
+
+        <ul class="nav__menu">
+          <li><a class="nav__link" href="">Link 1</a></li>
+          <li><a class="nav__link" href="">Link 2</a></li>
+          <li><a class="nav__link" href="">Link 3</a></li>
+        </ul>
+
+        <!-- Label para marcar/desmarcar o input. -->
+        <label for="check">Menu</label>
+      </nav>
+    </header>
+
+    <!-- Isso é necessário para o menu passar por baixo do header na mesma camada. --> 
+    <ul class="nav__menu nav__menu--mobile">
+      <li><a class="nav__link" href="">Link 1</a></li>
+      <li><a class="nav__link" href="">Link 2</a></li>
+      <li><a class="nav__link" href="">Link 3</a></li>
+    </ul>
+  </body>
+</html>
